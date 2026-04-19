@@ -7,9 +7,9 @@ EduTools es una solución integral diseñada para optimizar el flujo de trabajo 
 ## 🔗 Ecosistema de Gestión
 Para garantizar la transparencia y el seguimiento ágil del equipo **DEV6**, el proyecto cuenta con los siguientes entornos integrados:
 
-* 📑 **[Documentación en Wiki](https://github.com/ISPC-TSDWAD/ProyectoIntegradorll--Dev6/wiki):** Actas de reunión, detalles de arquitectura y Product Discovery.
+* 📑 **[Documentación en Wiki](https://github.com/ISPC-TSDWAD/ProyectoIntegradorII--Dev6/wiki):** Actas de reunión, detalles de arquitectura y Product Discovery.
 * 📊 **[Planificación Técnica (GitHub Projects)](https://github.com/orgs/ISPC-TSDWAD/projects/5):** Gestión de Sprints, Issues y backlog técnico.
-* 📋 **[Tablero Visual (Trello)](https://trello.com/b/IFzzHXZe/edutools-gestion-y-sandbox-pedagogico-dev6):** Visión macro y estados de tareas para stakeholders.
+* 📋 **[Tablero Visual (Trello)](https://trello.com/b/lFzzHXZe/pintegradorii-edutools-gestion-y-sandbox-pedagogico-dev6):** Visión macro y estados de tareas para stakeholders.
 
 ---
 

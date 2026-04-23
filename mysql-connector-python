@@ -1,0 +1,24 @@
+import mysql.connector
+
+# Establish the connection
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  password="R860244195c",
+  database="yourdatabase"
+)
+
+# Create a cursor object
+mycursor = mydb.cursor()
+
+# Execute a query
+mycursor.execute("SELECT * FROM customers")
+
+# Fetch results
+myresult = mycursor.fetchall()
+
+for x in myresult:
+  print(x)
+
+# Close the connection
+mydb.close()

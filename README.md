@@ -36,14 +36,16 @@ Durante la fase de **Product Discovery**, el equipo analizó la brecha crítica 
 
 ---
 
-## 👥 3. Equipo de Desarrollo (DEV6)
-* **Jonathan Guillén:** Coordinación y Desarrollo Frontend (Angular).
-* **Alejandro Corvalán:** Arquitectura de Datos y Backend (Django).
-* **Roni Duncan Gonzales Martínez:** Seguridad, DB y Configuración de Entornos.
-* **Gonzalo Velasco:** Análisis de Estilos Institucionales e Investigación.
-* **Daniela Salvo:** Diseño de Interfaz (UI/UX) y Lógica de Componentes.
-* **Gerardo Romero:** Desarrollo de Módulos y Pruebas de Integración.
+## 👥 3. Equipo de Desarrollo (DEV6) - Mapa de Roles Integrados
 
+| Integrante | Roles Oficiales (Cátedra) | Responsabilidades y Tareas Clave | Área de Impacto |
+| :--- | :--- | :--- | :--- |
+| **Jonathan Guillén** | **PM / BA / Dev Full Stack** | Liderazgo técnico, Product Discovery (Pain Points) y Setup inicial del Repositorio. | Gestión / Funcional / Código |
+| **Alejandro Corvalán** | **BA / Dev Full Stack** | Análisis de requerimientos funcionales y Arquitectura de Modelos en Django. | Funcional / Backend |
+| **Roni Duncan G. M.** | **Dev Full Stack (Infra/DB)** | Diseño de Base de Datos MySQL, Configuración de Entornos y Seguridad. | Datos / Infraestructura |
+| **Gonzalo Velasco** | **BA / UX Designer (Research)** | Investigación de Estilos Canvas LMS y Levantamiento de Requerimientos Visuales. | Funcional / Diseño |
+| **Daniela Salvo** | **UX/UI Designer** | Diseño de Interfaz (Sandbox), Mockups y Prototipado de Componentes. | Diseño |
+| **Gerardo Romero** | **QA Engineer** | Planificación de Pruebas (QA), Casos de Test y Validación de Integración. | Calidad |
 ---
 
 ## 💻 4. Stack Tecnológico

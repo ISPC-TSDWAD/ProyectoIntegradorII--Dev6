@@ -1,0 +1,36 @@
+# Ignorar archivos y directorios generados automáticamente por el sistema o herramientas
+
+# --- Directorios de Entornos Virtuales ---
+# Excluye las carpetas de entornos virtuales comunes de Python
+venv/
+env/
+.venv/
+.env/
+
+# --- Archivos de Configuración Sensibles o Locales ---
+# Archivos que contienen credenciales, configuraciones locales o información privada.
+# ¡MUY IMPORTANTE NO SUBIR ESTOS AL REPOSITORIO PÚBLICO!
+*.env
+.env.local
+.flaskenv
+*.sqlite3 # Si usas SQLite localmente
+db.sqlite3 # Archivo de base de datos específico de Django/Flask
+
+# Tu archivo setup_edutools_db.py contiene contraseñas, ¡hay que ignorarlo!
+setup_edutools_db.py
+
+# --- Archivos de Python ---
+__pycache__/       # Cache de compilación de Python
+*.pyc              # Archivos compilados de Python
+*.o                # Objetos compilados (C/C++ extensions)
+*.egg-info/        # Información de paquetes de Python
+.pytest_cache/     # Cache de Pytest
+.coverage          # Archivos de cobertura de tests
+
+# --- Archivos específicos de Editores/IDE (Visual Studio Code) ---
+.vscode/           # Configuraciones del editor (si no quieres compartirlas)
+*.log              # Archivos de logs
+
+# --- Archivos del Sistema Operativo ---
+.DS_Store          # Archivos de macOS
+Thumbs.db          # Archivos de Windows

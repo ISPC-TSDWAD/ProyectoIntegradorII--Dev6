@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EduTools</title>
+<style>
+body{margin:0;font-family:Arial;background:#3498db;height:100vh;display:flex;justify-content:center;align-items:center}
+.card{background:#fff;padding:30px;border-radius:12px;width:320px;box-shadow:0 4px 15px rgba(0,0,0,.2)}
+#splash{position:fixed;inset:0;background:#3498db;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:10;font-size:32px;font-weight:bold}
+.hidden{display:none!important}
+input{width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:6px;box-sizing:border-box}
+button{width:100%;padding:11px;background:#3498db;color:#fff;border:none;border-radius:6px;margin-top:8px;font-weight:bold;cursor:pointer}
+.error{color:#e74c3c;font-size:12px;text-align:center}
+.ok{color:#27ae60;font-size:12px;text-align:center}
+</style></head><body>
+
+<div id="splash">EduTools Ì≥ö<div style="font-size:14px;font-weight:normal;margin-top:10px">Cargando backend seguro...</div></div>
+
+<div class="card hidden" id="loginCard">
+<h2 style="text-align:center">Iniciar Sesi√≥n</h2>
+<input id="user" placeholder="Usuario">
+<input id="pass" type="password" placeholder="Contrase√±a">
+<button onclick="login()">ENTRAR</button>
+<button onclick="showReg()" style="background:#95a5a6">Crear cuenta</button>
+<p id="msg"></p>
+</div>
+
+<div class="card hidden" id="regCard">
+<h2 style="text-align:center">Registro</h2>
+<input id="userR" placeholder="Nuevo usuario">
+<input id="passR" type="password" placeholder="Contrase√±a">
+<button onclick="register()">REGISTRARME</button>
+<button onclick="showLogin()" style="background:#95a5a6">Ya tengo cuenta</button>
+<p id="msgR"></p>
+</div>
+
+<div class="card hidden" id="dashCard">
+<h2>Bienvenido <span id="uname"></span></h2>
+<p style="font-size:12px;color:gray">Token JWT v√°lido 60min - Rol validado en backend</p>
+<button onclick="testProtegido()">Probar endpoint protegido</button>
+<div id="lista" style="margin-top:10px"></div>
+<button onclick="logout()" style="background:#e74c3c;margin-top:15px">Cerrar sesi√≥n</button>
+</div>
+
+<script>
+const API="http://127.0.0.1:8000/api";
+setTimeout(()=>{document.getElementById("splash").style.display="none"; checkToken();},1500);
+function checkToken(){
+  if(localStorage.getItem("token")){ showDash(); } else { showLogin(); }
+}
+function showLogin(){ hideAll(); document.getElementById("loginCard").classList.remove("hidden"); }
+function showReg(){ hideAll(); document.getElementById("regCard").classList.remove("hidden"); }
+function showDash(){ hideAll(); document.getElementById("dashCard").classList.remove("hidden"); document.getElementById("uname").innerText=localStorage.getItem("username")||"Usuario"; }
+function hideAll(){ document.querySelectorAll(".card").forEach(c=>c.classList.add("hidden")); }
+
+async function login(){
+  const username=document.getElementById("user").value, password=document.getElementById("pass").value;
+  const r=await fetch(`${API}/login/`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({username,password})});
+  const d=await r.json();
+  if(r.ok){ localStorage.setItem("token",d.access); localStorage.setItem("username",username); showDash(); }
+  else { document.getElementById("msg").innerHTML=`<span class=error>Error ${r.status} - queda en LOG</span>`; }
+}
+async function register(){
+  const username=document.getElementById("userR").value, password=document.getElementById("passR").value;
+  const r=await fetch(`${API}/register/`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({username,password})});
+  if(r.ok){ document.getElementById("msgR").innerHTML="<span class=ok>Creado! Ahora logueate</span>"; setTimeout(showLogin,1000); }
+  else { const d=await r.json(); document.getElementById("msgR").innerHTML=`<span class=error>${JSON.stringify(d)}</span>`; }
+}
+async function testProtegido(){
+  const r=await fetch(`${API}/productos/`,{headers:{"Authorization":"Bearer "+localStorage.getItem("token")}});
+  if(r.status==401) document.getElementById("lista").innerHTML="<span class=error>401 - Endpoint protegido OK</span>";
+  else if(r.status==403) document.getElementById("lista").innerHTML="<span class=error>403 - Roles OK</span>";
+  else { const d=await r.json(); document.getElementById("lista").innerHTML="Acceso OK: "+JSON.stringify(d).slice(0,100); }
+}
+function logout(){ localStorage.clear(); showLogin(); }
+</script></body></html>
